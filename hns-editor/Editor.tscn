@@ -1,0 +1,306 @@
+[gd_scene load_steps=5 format=3 uid="uid://bonndkig01vmn"]
+
+[ext_resource type="Script" uid="uid://6qw8ffk5e7ge" path="res://camera_controller.gd" id="1_1qsck"]
+[ext_resource type="Script" uid="uid://e3f1ox6y6cvg" path="res://addons/Gizmo3DScript/gizmo3D.gd" id="1_62x0m"]
+[ext_resource type="Script" uid="uid://bpyxs5kev82r8" path="res://editor.gd" id="1_agv3s"]
+
+[sub_resource type="Environment" id="Environment_agv3s"]
+background_energy_multiplier = 0.0
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+reflected_light_source = 1
+
+[node name="Editor" type="Node3D"]
+script = ExtResource("1_agv3s")
+
+[node name="_" type="Node" parent="."]
+
+[node name="GUI" type="Control" parent="_"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="_/GUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Inspector" type="PanelContainer" parent="_/GUI/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="_/GUI/HSplitContainer/Inspector"]
+layout_mode = 2
+
+[node name="Button_Add" type="Button" parent="_/GUI/HSplitContainer/Inspector/VBoxContainer"]
+layout_mode = 2
+text = "Add"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="_/GUI/HSplitContainer/Inspector/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button_Save" type="Button" parent="_/GUI/HSplitContainer/Inspector/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Save"
+
+[node name="Button_Load" type="Button" parent="_/GUI/HSplitContainer/Inspector/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Load"
+
+[node name="Label_Position" type="Label" parent="_/GUI/HSplitContainer/Inspector/VBoxContainer"]
+layout_mode = 2
+text = "Position:"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="_/GUI/HSplitContainer/Inspector/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="_/GUI/HSplitContainer/Inspector/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "X"
+
+[node name="SpinBox_position_x" type="SpinBox" parent="_/GUI/HSplitContainer/Inspector/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+step = -1.0
+allow_greater = true
+allow_lesser = true
+custom_arrow_step = 1.0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="_/GUI/HSplitContainer/Inspector/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="_/GUI/HSplitContainer/Inspector/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Y"
+
+[node name="SpinBox_position_y" type="SpinBox" parent="_/GUI/HSplitContainer/Inspector/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+step = -1.0
+allow_greater = true
+allow_lesser = true
+custom_arrow_step = 1.0
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="_/GUI/HSplitContainer/Inspector/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="_/GUI/HSplitContainer/Inspector/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "Z"
+
+[node name="SpinBox_position_z" type="SpinBox" parent="_/GUI/HSplitContainer/Inspector/VBoxContainer/HBoxContainer4"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+step = -1.0
+allow_greater = true
+allow_lesser = true
+custom_arrow_step = 1.0
+
+[node name="Label_Rotation" type="Label" parent="_/GUI/HSplitContainer/Inspector/VBoxContainer"]
+layout_mode = 2
+text = "Rotation:"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="_/GUI/HSplitContainer/Inspector/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="_/GUI/HSplitContainer/Inspector/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+text = "X"
+
+[node name="SpinBox_rotation_x" type="SpinBox" parent="_/GUI/HSplitContainer/Inspector/VBoxContainer/HBoxContainer5"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+step = -1.0
+allow_greater = true
+allow_lesser = true
+custom_arrow_step = 1.0
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="_/GUI/HSplitContainer/Inspector/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="_/GUI/HSplitContainer/Inspector/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+text = "Y"
+
+[node name="SpinBox_rotation_y" type="SpinBox" parent="_/GUI/HSplitContainer/Inspector/VBoxContainer/HBoxContainer6"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+step = -1.0
+allow_greater = true
+allow_lesser = true
+custom_arrow_step = 1.0
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="_/GUI/HSplitContainer/Inspector/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="_/GUI/HSplitContainer/Inspector/VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+text = "Z"
+
+[node name="SpinBox_rotation_z" type="SpinBox" parent="_/GUI/HSplitContainer/Inspector/VBoxContainer/HBoxContainer7"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+step = -1.0
+allow_greater = true
+allow_lesser = true
+custom_arrow_step = 1.0
+
+[node name="Label_Scale" type="Label" parent="_/GUI/HSplitContainer/Inspector/VBoxContainer"]
+layout_mode = 2
+text = "Scale:"
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="_/GUI/HSplitContainer/Inspector/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="_/GUI/HSplitContainer/Inspector/VBoxContainer/HBoxContainer8"]
+layout_mode = 2
+text = "X"
+
+[node name="SpinBox_scale_x" type="SpinBox" parent="_/GUI/HSplitContainer/Inspector/VBoxContainer/HBoxContainer8"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+step = -1.0
+allow_greater = true
+allow_lesser = true
+custom_arrow_step = 1.0
+
+[node name="HBoxContainer9" type="HBoxContainer" parent="_/GUI/HSplitContainer/Inspector/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="_/GUI/HSplitContainer/Inspector/VBoxContainer/HBoxContainer9"]
+layout_mode = 2
+text = "Y"
+
+[node name="SpinBox_scale_y" type="SpinBox" parent="_/GUI/HSplitContainer/Inspector/VBoxContainer/HBoxContainer9"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+step = -1.0
+allow_greater = true
+allow_lesser = true
+custom_arrow_step = 1.0
+
+[node name="HBoxContainer10" type="HBoxContainer" parent="_/GUI/HSplitContainer/Inspector/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="_/GUI/HSplitContainer/Inspector/VBoxContainer/HBoxContainer10"]
+layout_mode = 2
+text = "Z"
+
+[node name="SpinBox_scale_z" type="SpinBox" parent="_/GUI/HSplitContainer/Inspector/VBoxContainer/HBoxContainer10"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+step = -1.0
+allow_greater = true
+allow_lesser = true
+custom_arrow_step = 1.0
+
+[node name="PanelContainer" type="PanelContainer" parent="_/GUI/HSplitContainer/Inspector/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="_/GUI/HSplitContainer/Inspector/VBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="Data_panel" type="VBoxContainer" parent="_/GUI/HSplitContainer/Inspector/VBoxContainer/PanelContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Viewport_padding" type="Control" parent="_/GUI/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 8.0
+mouse_filter = 1
+
+[node name="SaveFileDialog" type="FileDialog" parent="_/GUI"]
+unique_name_in_owner = true
+size = Vector2i(720, 480)
+access = 2
+filters = PackedStringArray("*.json")
+
+[node name="LoadFileDialog" type="FileDialog" parent="_/GUI"]
+unique_name_in_owner = true
+title = "Open a File"
+size = Vector2i(720, 480)
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.json")
+
+[node name="AddMapObjectPopup" type="PopupPanel" parent="_/GUI"]
+unique_name_in_owner = true
+mode = 2
+initial_position = 2
+size = Vector2i(360, 720)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="_/GUI/AddMapObjectPopup"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 356.0
+offset_bottom = 716.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+follow_focus = true
+
+[node name="AddMapObjectButtons" type="VBoxContainer" parent="_/GUI/AddMapObjectPopup/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="_"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_mode = 0
+sky_mode = 1
+
+[node name="EditorCamera" type="Camera3D" parent="_"]
+unique_name_in_owner = true
+environment = SubResource("Environment_agv3s")
+current = true
+fov = 90.0
+near = 0.1
+far = 10000.0
+script = ExtResource("1_1qsck")
+
+[node name="Gizmo3D" type="Node3D" parent="_"]
+unique_name_in_owner = true
+visible = false
+script = ExtResource("1_62x0m")
+_selection_box_color = Color(0.5019608, 0.5019608, 0.5019608, 1)
+metadata/_custom_type_script = "uid://e3f1ox6y6cvg"
+
+[connection signal="pressed" from="_/GUI/HSplitContainer/Inspector/VBoxContainer/Button_Add" to="." method="_on_button_add_pressed"]
+[connection signal="pressed" from="_/GUI/HSplitContainer/Inspector/VBoxContainer/HBoxContainer/Button_Save" to="." method="_on_button_save_pressed"]
+[connection signal="pressed" from="_/GUI/HSplitContainer/Inspector/VBoxContainer/HBoxContainer/Button_Load" to="." method="_on_button_load_pressed"]
+[connection signal="value_changed" from="_/GUI/HSplitContainer/Inspector/VBoxContainer/HBoxContainer2/SpinBox_position_x" to="." method="_on_spin_box_position_x_value_changed" flags=18]
+[connection signal="value_changed" from="_/GUI/HSplitContainer/Inspector/VBoxContainer/HBoxContainer3/SpinBox_position_y" to="." method="_on_spin_box_position_y_value_changed" flags=18]
+[connection signal="value_changed" from="_/GUI/HSplitContainer/Inspector/VBoxContainer/HBoxContainer4/SpinBox_position_z" to="." method="_on_spin_box_position_z_value_changed" flags=18]
+[connection signal="value_changed" from="_/GUI/HSplitContainer/Inspector/VBoxContainer/HBoxContainer5/SpinBox_rotation_x" to="." method="_on_spin_box_rotation_x_value_changed" flags=18]
+[connection signal="value_changed" from="_/GUI/HSplitContainer/Inspector/VBoxContainer/HBoxContainer6/SpinBox_rotation_y" to="." method="_on_spin_box_rotation_y_value_changed" flags=18]
+[connection signal="value_changed" from="_/GUI/HSplitContainer/Inspector/VBoxContainer/HBoxContainer7/SpinBox_rotation_z" to="." method="_on_spin_box_rotation_z_value_changed" flags=18]
+[connection signal="value_changed" from="_/GUI/HSplitContainer/Inspector/VBoxContainer/HBoxContainer8/SpinBox_scale_x" to="." method="_on_spin_box_scale_x_value_changed" flags=18]
+[connection signal="value_changed" from="_/GUI/HSplitContainer/Inspector/VBoxContainer/HBoxContainer9/SpinBox_scale_y" to="." method="_on_spin_box_scale_y_value_changed" flags=18]
+[connection signal="value_changed" from="_/GUI/HSplitContainer/Inspector/VBoxContainer/HBoxContainer10/SpinBox_scale_z" to="." method="_on_spin_box_scale_z_value_changed" flags=18]
+[connection signal="mouse_entered" from="_/GUI/HSplitContainer/Viewport_padding" to="." method="_on_viewport_padding_mouse_entered"]
+[connection signal="file_selected" from="_/GUI/SaveFileDialog" to="." method="_on_save_file_dialog_file_selected"]
+[connection signal="file_selected" from="_/GUI/LoadFileDialog" to="." method="_on_load_file_dialog_file_selected"]
+[connection signal="transform_changed" from="_/Gizmo3D" to="." method="_on_gizmo_3d_transform_changed"]
