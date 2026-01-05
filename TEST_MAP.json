@@ -4,8 +4,7 @@
 			"Color A": 1.0,
 			"Color B": 0.5,
 			"Color G": 0.5,
-			"Color R": 0.5,
-			"Invisible": false
+			"Color R": 0.5
 		},
 		"position_x": 0.0,
 		"position_y": 0.0,
@@ -23,8 +22,7 @@
 			"Color A": 1.0,
 			"Color B": 1.0,
 			"Color G": 0.0,
-			"Color R": 0.0,
-			"Invisible": false
+			"Color R": 0.0
 		},
 		"position_x": 4.40000009536743,
 		"position_y": 0.5,
@@ -42,8 +40,7 @@
 			"Color A": 1.0,
 			"Color B": 0.0,
 			"Color G": 0.0,
-			"Color R": 1.0,
-			"Invisible": false
+			"Color R": 1.0
 		},
 		"position_x": -4.40000009536743,
 		"position_y": 0.5,
@@ -61,8 +58,7 @@
 			"Color A": 1.0,
 			"Color B": 0.5,
 			"Color G": 0.5,
-			"Color R": 0.5,
-			"Invisible": false
+			"Color R": 0.5
 		},
 		"position_x": 3.0,
 		"position_y": 2.0,
@@ -80,8 +76,7 @@
 			"Color A": 1.0,
 			"Color B": 0.5,
 			"Color G": 0.5,
-			"Color R": 0.5,
-			"Invisible": false
+			"Color R": 0.5
 		},
 		"position_x": 5.0,
 		"position_y": 2.0,
@@ -99,8 +94,7 @@
 			"Color A": 1.0,
 			"Color B": 0.5,
 			"Color G": 0.5,
-			"Color R": 0.5,
-			"Invisible": false
+			"Color R": 0.5
 		},
 		"position_x": 3.0,
 		"position_y": 4.0,
@@ -118,8 +112,7 @@
 			"Color A": 1.0,
 			"Color B": 0.5,
 			"Color G": 0.5,
-			"Color R": 0.5,
-			"Invisible": false
+			"Color R": 0.5
 		},
 		"position_x": -5.0,
 		"position_y": 2.0,
@@ -137,8 +130,7 @@
 			"Color A": 1.0,
 			"Color B": 0.5,
 			"Color G": 0.5,
-			"Color R": 0.5,
-			"Invisible": false
+			"Color R": 0.5
 		},
 		"position_x": -3.0,
 		"position_y": 2.0,
@@ -156,8 +148,7 @@
 			"Color A": 1.0,
 			"Color B": 0.5,
 			"Color G": 0.5,
-			"Color R": 0.5,
-			"Invisible": false
+			"Color R": 0.5
 		},
 		"position_x": -3.0,
 		"position_y": 4.0,

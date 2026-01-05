@@ -5,7 +5,6 @@ func _init() -> void:
 	mesh = BoxMesh.new()
 	
 	data = {
-		"Invisible": false,
 		"Color R": 1.0,
 		"Color G": 1.0,
 		"Color B": 1.0,
@@ -14,17 +13,9 @@ func _init() -> void:
 
 @onready var material := StandardMaterial3D.new()
 func _process(_delta: float) -> void:
-	if data["Invisible"]:
-		material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-		cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-		material.transparency = BaseMaterial3D.TRANSPARENCY_DISABLED
-		material.albedo_color = Color(1.0, 1.0, 1.0)
-	else:
-		material.shading_mode = BaseMaterial3D.SHADING_MODE_PER_PIXEL
-		cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON
-		material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA_DEPTH_PRE_PASS
-		material.albedo_color.r = data["Color R"]
-		material.albedo_color.g = data["Color G"]
-		material.albedo_color.b = data["Color B"]
-		material.albedo_color.a = data["Color A"]
+	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA_DEPTH_PRE_PASS
+	material.albedo_color.r = data["Color R"]
+	material.albedo_color.g = data["Color G"]
+	material.albedo_color.b = data["Color B"]
+	material.albedo_color.a = data["Color A"]
 	set_surface_override_material(0, material)
