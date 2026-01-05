@@ -5,12 +5,12 @@ var light: OmniLight3D
 
 
 func _init() -> void:
-	cast_shadow =GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-	
 	var _mesh = SphereMesh.new()
 	_mesh.height = 0.2
 	_mesh.radius = 0.1
 	mesh = _mesh
+	
+	cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	
 	var material := StandardMaterial3D.new()
 	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
@@ -27,5 +27,7 @@ func _init() -> void:
 	}
 
 func _process(_delta: float) -> void:
+	transform.basis = Basis() # Reset rotation & scaling
+	
 	light.light_energy = data["Brightness"]
 	light.omni_range = data["Range"]
