@@ -26,7 +26,8 @@ func _init() -> void:
 		"Range": light.omni_range
 	}
 
-func _process(_delta: float) -> void:
+func _physics_process(_delta: float) -> void:
+	if position.y < 0.0: position.y = 0.0
 	transform.basis = Basis() # Reset rotation & scaling
 	
 	light.light_energy = data["Brightness"]

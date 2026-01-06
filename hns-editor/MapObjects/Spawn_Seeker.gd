@@ -12,5 +12,6 @@ func _init() -> void:
 	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 	set_surface_override_material(0, material)
 
-func _process(_delta: float) -> void:
+func _physics_process(_delta: float) -> void:
+	if position.y < 0.0: position.y = 0.0
 	transform.basis = Basis() # Reset rotation & scaling

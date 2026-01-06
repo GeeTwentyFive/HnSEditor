@@ -12,7 +12,9 @@ func _init() -> void:
 	}
 
 @onready var material := StandardMaterial3D.new()
-func _process(_delta: float) -> void:
+func _physics_process(_delta: float) -> void:
+	if position.y < 0.0: position.y = 0.0
+	
 	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA_DEPTH_PRE_PASS
 	material.albedo_color.r = data["Color R"]
 	material.albedo_color.g = data["Color G"]
