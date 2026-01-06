@@ -9,7 +9,7 @@ var selected_map_object: MapObject
 func InstantiateMapObject(
 	base: String,
 	pos: Vector3 = Vector3.ZERO,
-	rot: Vector3 = Vector3.ZERO,
+	rot_degrees: Vector3 = Vector3.ZERO,
 	scale: Vector3 = Vector3.ONE
 ) -> MapObject:
 	if not registered_map_objects.has(base):
@@ -17,7 +17,7 @@ func InstantiateMapObject(
 	
 	var instance := registered_map_objects[base].duplicate()
 	instance.position = pos
-	instance.rotation = rot
+	instance.rotation_degrees = rot_degrees
 	instance.scale = scale
 	add_child(instance)
 	return instance
@@ -150,15 +150,21 @@ func Save(path: String) -> void:
 		if child is MapObject:
 			map_object_instances_data.append({
 				"type": child.get_meta("type"),
-				"position_x": child.position.x,
-				"position_y": child.position.y,
-				"position_z": child.position.z,
-				"rotation_x": child.rotation_degrees.x,
-				"rotation_y": child.rotation_degrees.y,
-				"rotation_z": child.rotation_degrees.z,
-				"scale_x": child.scale.x,
-				"scale_y": child.scale.y,
-				"scale_z": child.scale.z,
+				"pos": [
+					child.position.x,
+					child.position.y,
+					child.position.z
+				],
+				"rot": [
+					child.rotation_degrees.x,
+					child.rotation_degrees.y,
+					child.rotation_degrees.z
+				],
+				"scale": [
+					child.scale.x,
+					child.scale.y,
+					child.scale.z
+				],
 				"data": child.data
 			})
 	
@@ -183,9 +189,9 @@ func Load(path: String) -> void:
 		
 		var instance := InstantiateMapObject(
 			map_object["type"],
-			Vector3(map_object["position_x"], map_object["position_y"], map_object["position_z"]),
-			Vector3(map_object["rotation_x"], map_object["rotation_y"], map_object["rotation_z"]),
-			Vector3(map_object["scale_x"], map_object["scale_y"], map_object["scale_z"])
+			Vector3(map_object["pos"][0], map_object["pos"][1], map_object["pos"][2]),
+			Vector3(map_object["rot"][0], map_object["rot"][1], map_object["rot"][2]),
+			Vector3(map_object["scale"][0], map_object["scale"][1], map_object["scale"][2])
 		)
 		for key in map_object["data"]:
 			instance.data[key] = map_object["data"][key]
