@@ -1,6 +1,10 @@
 extends Node3D
 
 
+const DEFAULT_HIDER_SPAWN_POS = Vector3(0.0, 1.0, 0.0)
+const DEFAULT_SEEKER_SPAWN_POS = Vector3(0.0, 1.0, -10.0)
+
+
 var registered_map_objects: Dictionary[String, MapObject]
 var selected_map_object: MapObject
 
@@ -188,27 +192,24 @@ func _ready() -> void:
 		var res := load("res://MapObjects/" + file)
 		if res == null: continue
 		var instance: MapObject = res.new()
-		instance.set_meta("type", file.get_file())
+		instance.set_meta("type", file.get_file().get_basename())
 		var collider := Area3D.new()
 		var collision_shape := CollisionShape3D.new()
 		collision_shape.shape = instance.mesh.create_convex_shape()
 		collision_shape.transform = instance.transform
 		collider.add_child(collision_shape)
 		instance.add_child(collider)
-		registered_map_objects[file.get_file()] = instance
+		registered_map_objects[file.get_file().get_basename()] = instance
 	
-	for map_object_name in registered_map_objects:
-		var add_button := Button.new()
-		add_button.text = map_object_name.get_basename()
-		add_button.pressed.connect(
-			func():
-				SelectMapObject(InstantiateMapObject(
-					map_object_name,
-					%EditorCamera.position
-				))
-				%AddMapObjectPopup.hide()
-		)
-		%AddMapObjectButtons.add_child(add_button)
+	InstantiateMapObject(
+		"Spawn_Hider",
+		DEFAULT_HIDER_SPAWN_POS
+	)
+	
+	InstantiateMapObject(
+		"Spawn_Seeker",
+		DEFAULT_SEEKER_SPAWN_POS
+	)
 
 func _physics_process(_delta: float) -> void:
 	if get_viewport().gui_get_focus_owner() != null: return
@@ -229,12 +230,27 @@ func _physics_process(_delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if (event is InputEventKey and event.pressed and not event.is_echo()):
 		match event.keycode:
-			KEY_DELETE: DeleteSelectedMapObject()
+			KEY_DELETE:
+				if (
+					selected_map_object is SpawnHider
+					or
+					selected_map_object is SpawnSeeker
+				): return
+				
+				DeleteSelectedMapObject()
+			
 			KEY_ESCAPE:
 				get_viewport().gui_release_focus()
 				if Input.is_key_pressed(KEY_ALT):
 					get_tree().quit()
+			
 			KEY_D:
+				if (
+					selected_map_object is SpawnHider
+					or
+					selected_map_object is SpawnSeeker
+				): return
+				
 				if Input.is_key_pressed(KEY_ALT) and selected_map_object:
 					var clone := selected_map_object.duplicate()
 					clone.data = selected_map_object.data
@@ -244,8 +260,17 @@ func _input(event: InputEvent) -> void:
 
 #region CALLBACKS
 
-func _on_button_add_pressed() -> void:
-	%AddMapObjectPopup.popup_centered()
+func _on_button_add_box_pressed() -> void:
+	SelectMapObject(InstantiateMapObject(
+		"Box",
+		%EditorCamera.position
+	))
+
+func _on_button_add_light_pressed() -> void:
+	SelectMapObject(InstantiateMapObject(
+		"Light",
+		%EditorCamera.position
+	))
 
 
 func _on_button_save_pressed() -> void:

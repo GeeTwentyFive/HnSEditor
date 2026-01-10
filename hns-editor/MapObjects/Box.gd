@@ -7,16 +7,13 @@ func _init() -> void:
 	data = {
 		"Color R": 255.0,
 		"Color G": 255.0,
-		"Color B": 255.0,
-		"Color A": 255.0
+		"Color B": 255.0
 	}
 
 @onready var material := StandardMaterial3D.new()
 func _physics_process(_delta: float) -> void:
 	if position.y < 0.0: position.y = 0.0
-	
-	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA_DEPTH_PRE_PASS
-	
+		
 	data["Color R"] = roundf(data["Color R"])
 	if data["Color R"] < 0.0: data["Color R"] = 0.0
 	elif data["Color R"] > 255.0: data["Color R"] = 255.0
@@ -31,10 +28,5 @@ func _physics_process(_delta: float) -> void:
 	if data["Color B"] < 0.0: data["Color B"] = 0.0
 	elif data["Color B"] > 255.0: data["Color B"] = 255.0
 	material.albedo_color.b8 = int(data["Color B"])
-	
-	data["Color A"] = roundf(data["Color A"])
-	if data["Color A"] < 0.0: data["Color A"] = 0.0
-	elif data["Color A"] > 255.0: data["Color A"] = 255.0
-	material.albedo_color.a8 = int(data["Color A"])
 	
 	set_surface_override_material(0, material)

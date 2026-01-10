@@ -1,4 +1,5 @@
 extends MapObject
+class_name SpawnSeeker
 
 
 func _init() -> void:

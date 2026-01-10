@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bonndkig01vmn"]
+[gd_scene load_steps=7 format=3 uid="uid://bonndkig01vmn"]
 
 [ext_resource type="Script" uid="uid://6qw8ffk5e7ge" path="res://camera_controller.gd" id="1_1qsck"]
 [ext_resource type="Script" uid="uid://e3f1ox6y6cvg" path="res://addons/Gizmo3DScript/gizmo3D.gd" id="1_62x0m"]
@@ -9,6 +9,15 @@ background_energy_multiplier = 0.0
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 reflected_light_source = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_agv3s"]
+size = Vector3(1000, 0.01, 1000)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vip5s"]
+shading_mode = 0
+albedo_color = Color(0.5019608, 0, 0, 1)
+disable_receive_shadows = true
+distance_fade_max_distance = 100.0
 
 [node name="SubViewportContainer" type="SubViewportContainer"]
 texture_filter = 1
@@ -58,9 +67,13 @@ size_flags_horizontal = 3
 [node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/Editor/_/GUI/HSplitContainer/Inspector"]
 layout_mode = 2
 
-[node name="Button_Add" type="Button" parent="SubViewport/Editor/_/GUI/HSplitContainer/Inspector/VBoxContainer"]
+[node name="Button_Add_Box" type="Button" parent="SubViewport/Editor/_/GUI/HSplitContainer/Inspector/VBoxContainer"]
 layout_mode = 2
-text = "Add"
+text = "Add Box"
+
+[node name="Button_Add_Light" type="Button" parent="SubViewport/Editor/_/GUI/HSplitContainer/Inspector/VBoxContainer"]
+layout_mode = 2
+text = "Add Light"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SubViewport/Editor/_/GUI/HSplitContainer/Inspector/VBoxContainer"]
 layout_mode = 2
@@ -358,6 +371,11 @@ near = 0.1
 far = 10000.0
 script = ExtResource("1_1qsck")
 
+[node name="Death_Border" type="MeshInstance3D" parent="SubViewport/Editor/_/EditorCamera"]
+unique_name_in_owner = true
+mesh = SubResource("BoxMesh_agv3s")
+surface_material_override/0 = SubResource("StandardMaterial3D_vip5s")
+
 [node name="Gizmo3D" type="Node3D" parent="SubViewport/Editor/_"]
 unique_name_in_owner = true
 visible = false
@@ -365,7 +383,8 @@ script = ExtResource("1_62x0m")
 _selection_box_color = Color(0.5019608, 0.5019608, 0.5019608, 1)
 metadata/_custom_type_script = "uid://e3f1ox6y6cvg"
 
-[connection signal="pressed" from="SubViewport/Editor/_/GUI/HSplitContainer/Inspector/VBoxContainer/Button_Add" to="SubViewport/Editor" method="_on_button_add_pressed"]
+[connection signal="pressed" from="SubViewport/Editor/_/GUI/HSplitContainer/Inspector/VBoxContainer/Button_Add_Box" to="SubViewport/Editor" method="_on_button_add_box_pressed"]
+[connection signal="pressed" from="SubViewport/Editor/_/GUI/HSplitContainer/Inspector/VBoxContainer/Button_Add_Light" to="SubViewport/Editor" method="_on_button_add_light_pressed"]
 [connection signal="pressed" from="SubViewport/Editor/_/GUI/HSplitContainer/Inspector/VBoxContainer/HBoxContainer/Button_Save" to="SubViewport/Editor" method="_on_button_save_pressed"]
 [connection signal="pressed" from="SubViewport/Editor/_/GUI/HSplitContainer/Inspector/VBoxContainer/HBoxContainer/Button_Load" to="SubViewport/Editor" method="_on_button_load_pressed"]
 [connection signal="value_changed" from="SubViewport/Editor/_/GUI/HSplitContainer/Inspector/VBoxContainer/HBoxContainer2/SpinBox_position_x" to="SubViewport/Editor" method="_on_spin_box_position_x_value_changed" flags=18]

@@ -1,4 +1,5 @@
 extends MapObject
+class_name SpawnHider
 
 
 func _init() -> void:

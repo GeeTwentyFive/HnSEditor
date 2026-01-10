@@ -46,3 +46,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("Up"): translate_object_local(Vector3.UP * move_speed * delta)
 	if Input.is_action_pressed("Down"): translate_object_local(Vector3.DOWN * move_speed * delta)
 	if Input.is_action_pressed("Reset"): global_position = Vector3.ZERO
+
+func _process(_delta: float) -> void:
+	%Death_Border.global_transform.basis = Basis()
+	%Death_Border.global_position.y = 0.0
