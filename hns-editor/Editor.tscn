@@ -10,8 +10,9 @@ ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 reflected_light_source = 1
 
-[sub_resource type="BoxMesh" id="BoxMesh_agv3s"]
-size = Vector3(1000, 0.01, 1000)
+[sub_resource type="PlaneMesh" id="PlaneMesh_agv3s"]
+flip_faces = true
+size = Vector2(1000, 1000)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vip5s"]
 shading_mode = 0
@@ -373,7 +374,7 @@ script = ExtResource("1_1qsck")
 
 [node name="Death_Border" type="MeshInstance3D" parent="SubViewport/Editor/_/EditorCamera"]
 unique_name_in_owner = true
-mesh = SubResource("BoxMesh_agv3s")
+mesh = SubResource("PlaneMesh_agv3s")
 surface_material_override/0 = SubResource("StandardMaterial3D_vip5s")
 
 [node name="Gizmo3D" type="Node3D" parent="SubViewport/Editor/_"]
