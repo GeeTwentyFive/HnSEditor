@@ -91,4 +91,3 @@ lights_and_shadows/directional_shadow/size=8192
 textures/default_filters/anisotropic_filtering_level=4
 anti_aliasing/quality/msaa_3d=2
 anti_aliasing/screen_space_roughness_limiter/enabled=false
-lights_and_shadows/positional_shadow/atlas_size=8192
