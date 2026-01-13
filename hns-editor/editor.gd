@@ -241,8 +241,7 @@ func _input(event: InputEvent) -> void:
 			
 			KEY_ESCAPE:
 				get_viewport().gui_release_focus()
-				if Input.is_key_pressed(KEY_ALT):
-					get_tree().quit()
+				%GUI.visible = not %GUI.visible
 			
 			KEY_D:
 				if (
